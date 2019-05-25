@@ -17,6 +17,7 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->text('owner');
             $table->text('content');
+            $table->text('images');
             $table->text('type');
             $table->tinyInteger('selected')->default(0);
             $table->timestamps();

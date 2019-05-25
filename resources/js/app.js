@@ -7,7 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+import VueResource from "vue-resource"
+Vue.use(VueResource);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,14 +20,36 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//cms
+import welcomeComponent from './components/CMS/welcome'
+import aboutComponent from './components/CMS/about'
+import contactComponent from './components/CMS/contact'
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
-const app = new Vue({
-    el: '#app',
-});
+
+// Below are all registered components for the cms system
+
+const welcome = new Vue({
+   el:'#welcomeComponent',
+   components:{welcomeComponent},
+   props:[
+     'layout',
+   ],
+
+ })
+ const about = new Vue({
+    el:'#aboutComponent',
+    components:{aboutComponent},
+    props:[
+      'layout',
+    ],
+
+  })
+
+ const contact = new Vue({
+   el:'#contactComponent',
+   components:{contactComponent},
+   props:[
+     'layout',
+   ]
+ })

@@ -56,7 +56,6 @@
 </head>
 <body>
 <div  id="container">
- <!-- @include("includes.menu") -->
   <div class="CMS">
     <div id="contactComponent">
       @include('layouts.CMS.menu')
