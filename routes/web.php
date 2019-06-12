@@ -19,13 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 /** CMS routes **/
+Route::post('/Services/Request','ServicesController@RequestService');
+
+
 Route::group(['prefix'=>'cms','middleware'=>'auth'],function(){
   Route::get('welcome','cmsController@index');
   Route::put('updateLayouts','cmsController@updateLayouts');
   Route::get('about','cmsController@about');
   Route::get('user','cmsController@user');
   Route::get('contact','cmsController@contact');
+  Route::get('services','cmsController@services');
 
   Route::get('/GetBackgroundImages','cmsController@GetBackgroundImages');
   Route::put('/updateFormVerbage/{id}','ContactController@updateFormVerbage');
@@ -33,6 +38,7 @@ Route::group(['prefix'=>'cms','middleware'=>'auth'],function(){
   Route::post('/editBG_Color','WelcomeController@editBG_Color');
   Route::post('/editBG_Color_About','AboutController@editBG_Color');
   Route::post('/editBG_Color_Contact','ContactController@editBG_Color');
+  Route::post('/editBG_Color_Services','ServicesController@editBG_Color');
   Route::post('/Welcomes/UpdateBGImage','WelcomeController@UpdateBGImage');
   Route::resource('/Welcomes','WelcomeController',[
     'except' => ['edit','show']
@@ -50,4 +56,10 @@ Route::group(['prefix'=>'cms','middleware'=>'auth'],function(){
   Route::resource('/Contacts','ContactController',[
     'except' => ['edit','show']
   ]);
+  Route::post('/Services/UpdateBGImage','ServicesController@UpdateBGImage');
+  Route::resource('/Services','ServicesController',[
+    'except' => ['edit','show']
+  ]);
 });
+
+/** End of CMS routes **/

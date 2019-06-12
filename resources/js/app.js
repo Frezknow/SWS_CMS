@@ -24,8 +24,7 @@ Vue.use(VueResource);
 import welcomeComponent from './components/CMS/welcome'
 import aboutComponent from './components/CMS/about'
 import contactComponent from './components/CMS/contact'
-
-
+import servicesComponent from './components/CMS/services'
 
 // Below are all registered components for the cms system
 
@@ -53,3 +52,10 @@ const welcome = new Vue({
      'layout',
    ]
  })
+ const services = new Vue({
+  el:'#servicesComponent',
+  components:{servicesComponent},
+  props:[
+    'layout',
+  ]
+})

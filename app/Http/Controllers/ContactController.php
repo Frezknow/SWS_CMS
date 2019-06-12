@@ -105,9 +105,9 @@ class ContactController extends Controller
         $objDemo->name = $request->name;
         $objDemo->content = $request->content;
         $objDemo->email = $request->email;
-        //$objDemo->phone = $request->phone;
+        $objDemo->call = $request->phone;
 
-        Mail::to("frezknow@gmail.com")->send(new ContactUs($objDemo));
+        Mail::to(auth()->user()->email)->send(new ContactUs($objDemo));
     }
     public function editBG_Color(Request $request){
         $color = $request->color;

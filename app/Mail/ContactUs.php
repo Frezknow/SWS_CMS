@@ -28,14 +28,16 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->from('frezknow@gmail.com')
+        $from = $this->contact->email;
+        return $this->from($from)
+                    ->subject("New message from contact page.")
                     ->view('mails.contactUs')
                     ->with(
                       [
-                            'email' => $this->contact->email,
+                            'email' => $from,
                             'content' => $this->contact->content,
                             'name'=> $this->contact->name,
-                            //'phone'=>$this->content->phone
+                            'call'=>$this->contact->call
                       ]);
     }
 

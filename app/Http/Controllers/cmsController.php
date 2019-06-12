@@ -112,6 +112,10 @@ class cmsController extends Controller
         $layout = explode(",",auth()->user()->layouts)[2];
         return view('layouts.CMS.contact',['user'=>auth()->user(),'layout'=>$layout]);
     }
+    public function services(){
+     $layout = explode(",",auth()->user()->layouts)[3];
+     return view('layouts.CMS.services',['user'=>auth()->user(),'layout'=>$layout]);
+    }
     public function GetBackgroundImages(Request $request){
       $page = $request->page;
       $query="";
