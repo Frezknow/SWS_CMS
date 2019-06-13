@@ -3,7 +3,7 @@
    <div id="BG-Images" v-if="user.email">
      <a class="HideBGImages" @click="ToggleDiv('#BG-Images')">Hide Images</a>
      <center><b>Double click the desired image to update your background-image</b></center><br/>
-     <img v-for="(img,i) in BGImages" @dblclick="UpdateBGImage(img.id,i)" :src="'http://127.0.0.1:8000/'+img.images"/>
+     <img v-if="img.images!=''" v-for="(img,i) in BGImages" @dblclick="UpdateBGImage(img.id,i)" :src="'http://127.0.0.1:8000/'+img.images"/>
    </div>
      <input v-if="user.email" class="UpdatedBGImage" type="file" @change="UpdateBGImage('','')"/>
      <input  v-if="user.email" type='color' id="body" v-on:change="changeBG('body')"/>

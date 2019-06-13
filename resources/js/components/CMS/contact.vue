@@ -3,7 +3,7 @@
     <div id="BG-Images" v-if="user.email">
       <a class="HideBGImages" @click="ToggleDiv('#BG-Images')">Hide Images</a>
       <center><b>Double click the desired image to update your background-image</b></center><br/>
-      <img v-for="(img,i) in BGImages" @dblclick="UpdateBGImage(img.id,i)" :src="'http://127.0.0.1:8000/'+img.images"/>
+      <img v-if="img.images!=''"  v-for="(img,i) in BGImages" @dblclick="UpdateBGImage(img.id,i)" :src="'http://127.0.0.1:8000/'+img.images"/>
     </div>
     <input class="UpdatedBGImage" type="file" @change="UpdateBGImage('','')" v-if="user.email"/>
     <input type='color' id="body" v-on:change="changeBG('body')" v-if="user.email"/>
@@ -25,7 +25,6 @@
           <div style="display:none;"id="EditContainer" :class="'EditContainer'+index">
             <textarea  :id="'edit'+index" :class="'edit edit'+index" type="text"  v-html="contact.content" @blur="doneEdit(index)" @keyup.enter="doneEdit(index)" @keyup.esc="cancelEdit" v-focus>
             </textarea>
-            <!-- <button @click="cancelEdit(index)">Cancel</button> -->
             <button @click="doneEdit(index)">Save</button>
           </div>
         </div>
@@ -86,10 +85,6 @@ export default{
         _.forEach(response.data,function(item){
           if(item.type!="" && item.type!="slider"){
             $(item.type).css("background-color",item.content);
-            // if(item.type=="body"){
-            //   var image = "http://127.0.0.1:8000/"+item.images;
-            //   $(item.type).css("background-image","url("+image+")");
-            // }
             if(item.type=="#ContactFormVerbage"){
               vm.FormVerbage = item
             }

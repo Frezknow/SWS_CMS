@@ -11,6 +11,9 @@ use DateTime;
 
 class WelcomeController extends Controller
 {
+  public function __construct(){
+    $this->middleware('admin', ['except' => ['index','show']]);
+   }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +25,7 @@ class WelcomeController extends Controller
         return response($welcomes,Response::HTTP_OK);
     }
     public function UpdateBGImage(Request $request){
+
         if($request->hasfile('imgs') && $request->id==""){
         $updateOld = welcome::where('selected',1)->update(['selected'=>0]);
         $files = $request->imgs;
@@ -58,6 +62,7 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
+
       /**
       Create a welcome
        request file and check data fields for data first above
@@ -102,11 +107,13 @@ class WelcomeController extends Controller
      */
     public function update(Request $request, welcome $welcome)
     {
+
         $data = $request->validate([
           'content'=>'required',
         ]);
         $welcome = welcome::where('id',$request->id)->update($data);
         return response($welcome,200);
+
     }
 
     /**

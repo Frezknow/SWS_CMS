@@ -8,6 +8,10 @@ use Illuminate\Http\Response;
 
 class AboutController extends Controller
 {
+
+  public function __construct(){
+    $this->middleware('admin', ['except' => ['index','show','Slider']]);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +24,7 @@ class AboutController extends Controller
         return response($abouts,Response::HTTP_OK);
     }
     public function UpdateBGImage(Request $request){
+
       if($request->hasfile('imgs')  && $request->id==""){
         $updateOld = about::where('selected',1)->update(['selected'=>0]);
         $files = $request->imgs;
@@ -43,6 +48,7 @@ class AboutController extends Controller
         $about2="";
       }
       return response($about2,200);
+
     }
 
     public function editBG_Color(Request $request){
@@ -51,14 +57,18 @@ class AboutController extends Controller
         about::where([['type','=',$type],['owner','=',auth()->user()->email]])->update(array('content'=>$color,'images'=>''));
     }
     public function Slider(){
-      $slides = about::where('type','slider')->orderBy('id', 'desc')->get();
-      return response($slides,Response::HTTP_OK);
+
+        $slides = about::where('type','slider')->orderBy('id', 'desc')->get();
+        return response($slides,Response::HTTP_OK);
+
     }
-    public function deleteSlider(Request $request){
+    public function deleteSlider(Request $request)
+
        $about = about::where([['owner','=',auth()->user()->email],['id','=',$request->id]])->get();
        unlink($about[0]->images);
        $delete = about::where([['owner','=',auth()->user()->email],['id','=',$request->id]])->delete();
        return;
+
     }
 
     /**
@@ -69,6 +79,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+
         /**
         Create a about
          request file and check data fields for data first above
@@ -93,8 +104,10 @@ class AboutController extends Controller
 
         //Return data to vue array
         return response($about,Response::HTTP_OK);
+
     }
     public function addSlide(Request $request){
+
       $string="";
       if($request->hasfile('imgs')){
         $files = $request->imgs;
@@ -112,6 +125,7 @@ class AboutController extends Controller
        }
       }
       return response($about,200);
+
     }
 
     /**
@@ -141,7 +155,7 @@ class AboutController extends Controller
         ]);
         $about = about::where('id',$request->id)->update($data);
         return response($about,200);
-   }
+    }
   public function UpdateSlider(Request $request){
     // $data = $request->validate([
     //   'content' => 'required|string',
@@ -157,8 +171,6 @@ class AboutController extends Controller
      */
     public function destroy(Request $request)
     {
-        //about::destroy($about);
-        //return $request->about;
-        about::where('id',$request->About)->delete();
+       about::where('id',$request->About)->delete();
     }
 }

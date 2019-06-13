@@ -2135,7 +2135,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2162,10 +2161,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _.forEach(response.data, function (item) {
         if (item.type != "" && item.type != "slider") {
-          $(item.type).css("background-color", item.content); // if(item.type=="body"){
-          //   var image = "http://127.0.0.1:8000/"+item.images;
-          //   $(item.type).css("background-image","url("+image+")");
-          // }
+          $(item.type).css("background-color", item.content);
 
           if (item.type == "#ContactFormVerbage") {
             vm.FormVerbage = item;
@@ -38288,14 +38284,16 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _vm._l(_vm.BGImages, function(img, i) {
-              return _c("img", {
-                attrs: { src: "http://127.0.0.1:8000/" + img.images },
-                on: {
-                  dblclick: function($event) {
-                    return _vm.UpdateBGImage(img.id, i)
-                  }
-                }
-              })
+              return img.images != ""
+                ? _c("img", {
+                    attrs: { src: "http://127.0.0.1:8000/" + img.images },
+                    on: {
+                      dblclick: function($event) {
+                        return _vm.UpdateBGImage(img.id, i)
+                      }
+                    }
+                  })
+                : _vm._e()
             })
           ],
           2
@@ -38666,14 +38664,16 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _vm._l(_vm.BGImages, function(img, i) {
-              return _c("img", {
-                attrs: { src: "http://127.0.0.1:8000/" + img.images },
-                on: {
-                  dblclick: function($event) {
-                    return _vm.UpdateBGImage(img.id, i)
-                  }
-                }
-              })
+              return img.images != ""
+                ? _c("img", {
+                    attrs: { src: "http://127.0.0.1:8000/" + img.images },
+                    on: {
+                      dblclick: function($event) {
+                        return _vm.UpdateBGImage(img.id, i)
+                      }
+                    }
+                  })
+                : _vm._e()
             })
           ],
           2
@@ -39592,14 +39592,16 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _vm._l(_vm.BGImages, function(img, i) {
-              return _c("img", {
-                attrs: { src: "http://127.0.0.1:8000/" + img.images },
-                on: {
-                  dblclick: function($event) {
-                    return _vm.UpdateBGImage(img.id, i)
-                  }
-                }
-              })
+              return img.images
+                ? _c("img", {
+                    attrs: { src: "http://127.0.0.1:8000/" + img.images },
+                    on: {
+                      dblclick: function($event) {
+                        return _vm.UpdateBGImage(img.id, i)
+                      }
+                    }
+                  })
+                : _vm._e()
             })
           ],
           2

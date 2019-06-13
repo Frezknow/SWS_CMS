@@ -11,6 +11,9 @@ use File;
 use DateTime;
 class ContactController extends Controller
 {
+    public function __construct(){
+      $this->middleware('admin', ['except' => ['index','show','email']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,6 +26,7 @@ class ContactController extends Controller
 
     }
     public function UpdateBGImage(Request $request){
+
       if($request->hasfile('imgs') && $request->id==""){
         $updateOld = contact::where('selected',1)->update(['selected'=>0]);
         $files = $request->imgs;
@@ -47,10 +51,10 @@ class ContactController extends Controller
         $contact2="";
       }
       return response($contact2,200);
+
     }
     public function updateFormVerbage(Request $request,contact $contact){
-     contact::where([['owner','=',auth()->user()->email],['id','=',$request->id]])->update(['content'=>$request->FormVerbage]);
-
+      contact::where([['owner','=',auth()->user()->email],['id','=',$request->id]])->update(['content'=>$request->FormVerbage]);
     }
 
     /**
@@ -86,8 +90,9 @@ class ContactController extends Controller
         $data = $request->validate([
           'content'=>'required',
         ]);
-        $contact =contact::where([['id','=',$request->id],['owner','=',auth()->user()->email]])->update($data);
-        return response($contact,200);
+          $contact =contact::where([['id','=',$request->id],['owner','=',auth()->user()->email]])->update($data);
+          return response($contact,200);
+
     }
 
     /**
@@ -112,6 +117,6 @@ class ContactController extends Controller
     public function editBG_Color(Request $request){
         $color = $request->color;
         $type = $request->type;
-        contact::where([['type','=',$type],['owner','=',auth()->user()->email]])->update(array('content'=>$color,'images'=>''));
+          contact::where([['type','=',$type],['owner','=',auth()->user()->email]])->update(array('content'=>$color,'images'=>''));
     }
 }

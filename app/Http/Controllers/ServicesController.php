@@ -10,6 +10,9 @@ use App\user;
 
 class ServicesController extends Controller
 {
+   public function __construct(){
+     $this->middleware('admin', ['except' => ['index','show','RequestService']]);
+   }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +21,7 @@ class ServicesController extends Controller
     public function index()
     {
        //change to fit a website url
-       $email = auth()->user()->email;
+       $email = env('ADMIN_EMAIL');
        $services = services::where('owner',$email)->get();
        return response($services,200);
     }
