@@ -8,7 +8,7 @@
     <input class="UpdatedBGImage" type="file" @change="UpdateBGImage('','')" v-if="user.email"/>
     <input type='color' id="body" v-on:change="changeBG('body')" v-if="user.email"/>
       <div class="CMSHeader" id="contactHeader">
-        <a class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
+        <a v-if="user.email" class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
         <input type='color' id="CMSHeader" v-on:change="changeBG('.CMSHeader')"  v-if="user.email"/>
         <select v-on:change="ToggleLayout()" v-if="user.email">
           <option>Select Layout</option>

@@ -38370,18 +38370,20 @@ var render = function() {
         _vm._v(" "),
         _c("center", [_c("h3", [_vm._v("Your Business name here | CMS")])]),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "ShowBGImages",
-            on: {
-              click: function($event) {
-                return _vm.ToggleDiv("#BG-Images")
-              }
-            }
-          },
-          [_vm._v("Background Images")]
-        )
+        _vm.user.email
+          ? _c(
+              "a",
+              {
+                staticClass: "ShowBGImages",
+                on: {
+                  click: function($event) {
+                    return _vm.ToggleDiv("#BG-Images")
+                  }
+                }
+              },
+              [_vm._v("Background Images")]
+            )
+          : _vm._e()
       ],
       1
     ),
@@ -38707,18 +38709,20 @@ var render = function() {
       "div",
       { staticClass: "CMSHeader", attrs: { id: "contactHeader" } },
       [
-        _c(
-          "a",
-          {
-            staticClass: "ShowBGImages",
-            on: {
-              click: function($event) {
-                return _vm.ToggleDiv("#BG-Images")
-              }
-            }
-          },
-          [_vm._v("Background Images")]
-        ),
+        _vm.user.email
+          ? _c(
+              "a",
+              {
+                staticClass: "ShowBGImages",
+                on: {
+                  click: function($event) {
+                    return _vm.ToggleDiv("#BG-Images")
+                  }
+                }
+              },
+              [_vm._v("Background Images")]
+            )
+          : _vm._e(),
         _vm._v(" "),
         _vm.user.email
           ? _c("input", {
@@ -39132,18 +39136,20 @@ var render = function() {
             })
           : _vm._e(),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "ShowBGImages",
-            on: {
-              click: function($event) {
-                return _vm.ToggleDiv("#BG-Images")
-              }
-            }
-          },
-          [_vm._v("Background Images")]
-        ),
+        _vm.user.email
+          ? _c(
+              "a",
+              {
+                staticClass: "ShowBGImages",
+                on: {
+                  click: function($event) {
+                    return _vm.ToggleDiv("#BG-Images")
+                  }
+                }
+              },
+              [_vm._v("Background Images")]
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c("center", [_c("h2", [_vm._v("Your Business name here | CMS")])]),
         _vm._v(" "),
@@ -39671,18 +39677,20 @@ var render = function() {
             })
           : _vm._e(),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "ShowBGImages",
-            on: {
-              click: function($event) {
-                return _vm.ToggleDiv("#BG-Images")
-              }
-            }
-          },
-          [_vm._v("Background Images")]
-        ),
+        _vm.user.email
+          ? _c(
+              "a",
+              {
+                staticClass: "ShowBGImages",
+                on: {
+                  click: function($event) {
+                    return _vm.ToggleDiv("#BG-Images")
+                  }
+                }
+              },
+              [_vm._v("Background Images")]
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c("center", [_c("h2", [_vm._v("Your Business name here | CMS")])]),
         _vm._v(" "),

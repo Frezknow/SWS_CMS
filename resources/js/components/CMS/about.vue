@@ -14,7 +14,7 @@
        <option v-for="(l,index) in cssHREFS" v-bind:value="index">Layout {{index+1}}</option>
      </select>
      <center><h3>Your Business name here | CMS</h3></center>
-     <a class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
+     <a v-if="user.email" class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
    </div>
     <a class="CMS_Toggle_nav" @click="toggleMenu">Menu</a>
     <input  v-if="user.email" class="newSliderPics"  type="file" @change="AddSlides" multiple/>

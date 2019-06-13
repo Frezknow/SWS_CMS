@@ -14,7 +14,7 @@
         <option v-for="(l,index) in cssHREFS" v-bind:value="index">Layout {{index+1}}</option>
       </select>
       <input v-if="user.email" type='color' v-on:change="changeBG('.CMSHeader')" />
-      <a class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
+      <a v-if="user.email" class="ShowBGImages" @click="ToggleDiv('#BG-Images')">Background Images</a>
       <center><h2>Your Business name here | CMS</h2></center>
       <br/>
     </div>
